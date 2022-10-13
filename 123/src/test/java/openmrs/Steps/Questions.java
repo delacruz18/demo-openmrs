@@ -1,22 +1,14 @@
 package openmrs.Steps;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.io.File;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.TakesScreenshot;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
-import com.ibm.icu.text.SimpleDateFormat;
-
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.OutputType;
+
 
 public class Questions {
 
-	@Step
+	@Step //assert para validar que estemos logueados y en la pagina de home
 	public void HomeAssert(WebDriver driver) {
 
 		String ActualTitleHome = driver.getTitle();
@@ -32,21 +24,17 @@ public class Questions {
 
 	}
 
-	@Step
+	@Step // assert para validar que estemos localizados en la pagina de login
 	public void LoginAssert(WebDriver driver) {
-
 		String ActualTitle = driver.getTitle();
 		try {Assert.assertEquals(ActualTitle, "Login");
-
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();// se imprime el error arrojado
-
 		}
-
 	}
-
+/*
 	@Step
 	public void screenShot(WebDriver driver) {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -74,4 +62,5 @@ public class Questions {
 
 		Assert.assertEquals("Crea una contraseña", "Crea una contraseña");
 	}
+	*/
 }

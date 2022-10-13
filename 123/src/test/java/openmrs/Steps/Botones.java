@@ -37,7 +37,7 @@ public class Botones {
     private WebElement loginButton;
 
 
-    @Step
+    @Step //ingreso de credenciales al portal
     public void credenciales() throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(username));
@@ -48,14 +48,14 @@ public class Botones {
         password.sendKeys(Contrasena);
     }
 
-    @Step
+    @Step //selección de la opción Inpatient ward
     public void Location () throws IOException {
        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Inpatient));
         Inpatient.click();
     }
 
-    @Step
+    @Step //// se procede a dar logueo
     public void Login () throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
