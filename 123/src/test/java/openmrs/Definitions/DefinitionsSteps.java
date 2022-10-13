@@ -5,6 +5,7 @@ import openmrs.Paginas.LogIn;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import openmrs.Paginas.RegisterPatient;
 import org.openqa.selenium.WebDriver;
 import openmrs.Steps.*;
 import io.cucumber.java.en.Given;
@@ -16,7 +17,9 @@ public class DefinitionsSteps {
 	private WebDriver driver;
 	private Conexion conexion = new Conexion();
 	private LogIn logIn;
+
 	private Home home;
+	private RegisterPatient registerPatient;
 
 	
 
@@ -58,4 +61,25 @@ public class DefinitionsSteps {
 		home.Validar_cierre();
 	}
 
+	@When("^Seleccionar registrar paciente$")
+	public void Seleccionar_registrar_pacientes() throws IOException {
+		this.registerPatient = new RegisterPatient(driver);
+		this.registerPatient.Iniiciar_registro();
+	}
+
+	@When("Ingresar Datos  Demographics")
+	public void ingresar_datos_demographics() throws IOException {
+		this.registerPatient = new RegisterPatient(driver);
+		this.registerPatient.DatosDemograficos();
+		this.registerPatient.databirthdate();
+	}
+	@When("Ingresar Datos Contac Info")
+	public void ingresar_datos_contac_info() {
+
+	}
+	@When("Ingresar Datos Relationship")
+	public void ingresar_datos_relationship() {
+
+
+	}
 }

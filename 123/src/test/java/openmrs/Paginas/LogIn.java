@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LogIn {
     private WebDriver driver;
-      private Botones botones ;
+    private Botones botones ;
     private Questions questions ;
 
 

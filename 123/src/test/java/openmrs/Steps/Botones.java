@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
@@ -36,6 +37,17 @@ public class Botones {
     @FindBy(how = How.XPATH, using = "//input[@id='loginButton']")
     private WebElement loginButton;
 
+    @FindBy(how = How.ID, using = "birthdateDay-field")
+    private WebElement birthdateDay;
+
+    @FindBy(how = How.NAME, using = "birthdateMonth")
+    private WebElement birthdateMonth;
+
+    @FindBy(how = How.NAME, using = "birthdateYear")
+    private WebElement birthdateYear;
+
+
+
 
     @Step //ingreso de credenciales al portal
     public void credenciales() throws IOException {
@@ -48,19 +60,33 @@ public class Botones {
         password.sendKeys(Contrasena);
     }
 
-    @Step //selección de la opción Inpatient ward
+    @Step
     public void Location () throws IOException {
        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Inpatient));
         Inpatient.click();
     }
 
-    @Step //// se procede a dar logueo
+    @Step
     public void Login () throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
     }
+        @Step
+        public void birthdateDay () throws IOException {
+            WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(15));
+            wait.until(ExpectedConditions.visibilityOf(birthdateDay));
+            birthdateDay.clear();
+            birthdateDay.sendKeys("11");
+            new Select(birthdateMonth).selectByVisibleText("January");
+            wait.until(ExpectedConditions.elementToBeClickable(birthdateYear));
+            birthdateYear.clear();
+            birthdateYear.sendKeys("2022");
+
+        }
+
+
 
 
 }

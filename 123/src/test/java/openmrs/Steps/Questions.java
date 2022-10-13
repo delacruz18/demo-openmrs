@@ -4,9 +4,19 @@ package openmrs.Steps;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class Questions {
+
+	@FindBy(how = How.NAME, using = "givenName")
+	private WebElement givenName;
 
 	@Step //assert para validar que estemos logueados y en la pagina de home
 	public void HomeAssert(WebDriver driver) {
@@ -34,6 +44,8 @@ public class Questions {
 			e.printStackTrace();// se imprime el error arrojado
 		}
 	}
+
+
 /*
 	@Step
 	public void screenShot(WebDriver driver) {
