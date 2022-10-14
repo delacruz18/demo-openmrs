@@ -46,7 +46,8 @@ public class Botones {
     @FindBy(how = How.NAME, using = "birthdateYear")
     private WebElement birthdateYear;
 
-
+    @FindBy(how = How.XPATH, using = "//button[@id='next-button']")
+    private WebElement NextButton;
 
 
     @Step //ingreso de credenciales al portal
@@ -83,6 +84,8 @@ public class Botones {
             wait.until(ExpectedConditions.elementToBeClickable(birthdateYear));
             birthdateYear.clear();
             birthdateYear.sendKeys("2022");
+            wait.until(ExpectedConditions.elementToBeClickable(NextButton));
+            NextButton.click();
 
         }
 

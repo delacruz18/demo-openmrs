@@ -23,10 +23,12 @@ Scenario: Inicio de sesion
 	@tag3
 	Scenario: Register a Patient
 		Given abrir el navegador
-		When Diligenciar credenciasles
-		And  seleccionar location
-		And  iniciar sesión
+		When  Diligenciar credenciasles
+		And   seleccionar location
+		And   iniciar sesión
 		When  Seleccionar registrar paciente
-		And Ingresar Datos  Demographics
-		And  Ingresar Datos Contac Info
-		And  Ingresar Datos Relationship
+		And   Ingresar Datos  Demographics
+		And   Ingresar Datos Contac Info
+		And   Ingresar Datos Relationship
+		And   Confirmar creación
+		Then  Validar ID cliente Creado
