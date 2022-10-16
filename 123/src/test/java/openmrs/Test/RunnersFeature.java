@@ -9,7 +9,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @CucumberOptions(
         features = { "src/test/resources/features" }
                 , glue = { "openmrs.Definitions" }
-                //,tags = "@tag4"
+                //,tags = "@tag3"
 )
 
 public class RunnersFeature {

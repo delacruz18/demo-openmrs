@@ -93,8 +93,10 @@ public class DefinitionsSteps {
 	@Then("^Validar ID cliente Creado$")
 	public void validar_id_cliente_creado() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
-		registerPatient.PatientNumber();
-		registerPatient.ImprimerID();
+		this.findPatientRecord = new FindPatientRecord(driver);
+		this.registerPatient.PatientNumber();
+		this.registerPatient.ImprimerID();
+		this.findPatientRecord.ImprimirID();
 
 	}
 	@And("^Buscar paciente$")
