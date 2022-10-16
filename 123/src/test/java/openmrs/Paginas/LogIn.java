@@ -36,5 +36,6 @@ public class LogIn {
     @Step
     public void ValidarLogin () throws IOException {
       this.questions.HomeAssert(driver);
+      driver.quit();
     }
 }

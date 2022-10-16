@@ -2,7 +2,6 @@ package openmrs.Paginas;
 
 import openmrs.Steps.Botones;
 import openmrs.Steps.Questions;
-import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,31 +13,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
 
-public class Home {
-
+public class FindPatientRecord {
     private WebDriver driver;
     private Botones botones ;
     private Questions questions ;
+    private RegisterPatient registerPatient;
+    String Paciente = registerPatient.getIDdelPatient();
 
-
-    public Home(WebDriver driver) {
+    public FindPatientRecord(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
         this.botones= new Botones(driver);
         this.questions= new Questions();
-    }
+        this.registerPatient = new RegisterPatient(driver);
 
-    @FindBy(how = How.LINK_TEXT, using = "Logout")
-    private WebElement Logout;
-    @Step
-    public void Cerrarsesion () throws IOException {
+    }
+    @FindBy(how = How.CSS, using = "#coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension")
+    private WebElement FindMenu;
+
+
+    @FindBy(how = How.XPATH, using = "//input[@id='patient-search']")
+    private WebElement search;
+
+
+
+    public void BuscarPaciente () throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.elementToBeClickable(Logout));
-        Logout.click();
-    }
-    public void Validar_cierre () throws IOException {
-      this.questions.LoginAssert(driver);
-      driver.quit();
-    }
+        wait.until(ExpectedConditions.elementToBeClickable(FindMenu));
+        FindMenu.click();
+        wait.until(ExpectedConditions.elementToBeClickable(search));
+        search.clear();
+        search.sendKeys(Paciente);
 
+    }
 }

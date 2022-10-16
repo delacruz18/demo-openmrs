@@ -1,5 +1,6 @@
 package openmrs.Definitions;
 
+import openmrs.Paginas.FindPatientRecord;
 import openmrs.Paginas.Home;
 import openmrs.Paginas.LogIn;
 import io.cucumber.java.en.And;
@@ -16,10 +17,12 @@ public class DefinitionsSteps {
 
 	private WebDriver driver;
 	private Conexion conexion = new Conexion();
+
 	private Questions questions;
 	private LogIn logIn;
 	private Home home;
 	private RegisterPatient registerPatient;
+	private FindPatientRecord findPatientRecord;
 
 	
 
@@ -63,19 +66,19 @@ public class DefinitionsSteps {
 		this.registerPatient = new RegisterPatient(driver);
 		this.registerPatient.Iniiciar_registro();
 	}
-	@And("Ingresar Datos  Demographics")
+	@And("^Ingresar Datos  Demographics$")
 	public void ingresar_datos_demographics() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
 		this.registerPatient.DatosDemograficos();
 		this.registerPatient.databirthdate();
 	}
-	@And("Ingresar Datos Contac Info")
+	@And("^Ingresar Datos Contac Info$")
 	public void ingresar_datos_contac_info() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
 		this.registerPatient.ContactInfoAddres();
 		this.registerPatient.ContactInfophoneNumber();
 	}
-	@And("Ingresar Datos Relationship")
+	@And("^Ingresar Datos Relationship$")
 	public void ingresar_datos_relationship() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
 		this.registerPatient.ContactInfoprelatives();
@@ -84,16 +87,23 @@ public class DefinitionsSteps {
 	@And("^Confirmar creación$")
 	public void Confirmar_creación() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
-		this.registerPatient.ConfrimCreacion();
+		this.registerPatient.ConfirmCreacion();
 	}
 
-	@Then("Validar ID cliente Creado")
+	@Then("^Validar ID cliente Creado$")
 	public void validar_id_cliente_creado() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
-		this.registerPatient.PatientNumber();
+		registerPatient.PatientNumber();
+		registerPatient.ImprimerID();
 
 	}
+	@And("^Buscar paciente$")
+	public void buscar_paciente() throws IOException {
+	this.findPatientRecord = new FindPatientRecord(driver);
+	this.findPatientRecord.BuscarPaciente();
 
+
+	}
 
 
 

@@ -32,3 +32,13 @@ Scenario: Inicio de sesion
 		And   Ingresar Datos Relationship
 		And   Confirmar creación
 		Then  Validar ID cliente Creado
+
+
+	@tag4
+	Scenario: Register a Patient
+		Given abrir el navegador
+		When  Diligenciar credenciasles
+		And   seleccionar location
+		And   iniciar sesión
+		And   Buscar paciente
+

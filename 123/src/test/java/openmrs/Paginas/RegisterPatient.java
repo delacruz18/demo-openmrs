@@ -21,11 +21,7 @@ public class RegisterPatient {
 
     String name ="carlos";
     String LastName ="De La Cruz";
-    String IDdelPatient =null;
-
-
-
-
+   static String IDdelPatient;
 
     public RegisterPatient(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -132,38 +128,30 @@ public class RegisterPatient {
     }
 
 
-    public void ConfrimCreacion() throws IOException {
+    public void ConfirmCreacion() throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(submit));
         submit.click();
     }
-/*
-    public String PatientNumber() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-        wait.until(ExpectedConditions.visibilityOf(PatientID));
-        IDdelPatient=PatientID.getText();
-        System.out.println("El id del paciente es "+ IDdelPatient);
-        try{
-            if(PatientID.isDisplayed())
-                System.out.println("Element is present and displayed");
-            else
-                System.out.println("El elemento no ha sido desplegado");
-        }catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();// se imprime el error arrojado
-        }
-return IDdelPatient ;
-    }
-*/
 
     public String PatientNumber() throws IOException {
-        this.questions.PatientNumber();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(PatientID));
-        IDdelPatient=PatientID.getText();
-        System.out.println("El id del paciente es "+ IDdelPatient);
+        //this.questions.PatientNumber();
+       IDdelPatient=PatientID.getText();
+       System.out.println("El id del paciente es "+ IDdelPatient);
         return IDdelPatient ;
     }
 
+    public String getIDdelPatient() {        return IDdelPatient;
+    }
+
+
+
+    public void ImprimerID(){
+        System.out.println(IDdelPatient);
+
+}
 
 }

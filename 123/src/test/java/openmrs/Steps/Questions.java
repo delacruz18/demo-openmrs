@@ -26,9 +26,6 @@ public class Questions {
 	@FindBy(how = How.XPATH, using = "//div[@class='float-sm-right']/span")
 	private WebElement PatientID;
 
-
-
-
 	@Step //assert para validar que estemos logueados y en la pagina de home
 	public void HomeAssert(WebDriver driver) {
 		String ActualTitleHome = driver.getTitle();
@@ -41,20 +38,16 @@ public class Questions {
 		}
 	}
 
-	@Step // assert para validar que estemos localizados en la pagina de login
-	public void LoginAssert(WebDriver driver) {
-		String ActualTitle = driver.getTitle();
-		try {Assert.assertEquals(ActualTitle, "Login");
+		@Step // assert para validar que estemos localizados en la pagina de login
+		public void LoginAssert(WebDriver driver) {
+			String ActualTitle = driver.getTitle();
+			try {Assert.assertEquals(ActualTitle, "Login");
+			}
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();// se imprime el error arrojado
+			}
 		}
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();// se imprime el error arrojado
-		}
-	}
-
-
-
-
 	public void PatientNumber() throws IOException {
 
 		try{
