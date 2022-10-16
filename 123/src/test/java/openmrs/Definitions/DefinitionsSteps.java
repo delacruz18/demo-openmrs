@@ -1,12 +1,9 @@
 package openmrs.Definitions;
 
-import openmrs.Paginas.FindPatientRecord;
-import openmrs.Paginas.Home;
-import openmrs.Paginas.LogIn;
+import openmrs.Paginas.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import openmrs.Paginas.RegisterPatient;
 import org.openqa.selenium.WebDriver;
 import openmrs.Steps.*;
 import io.cucumber.java.en.Given;
@@ -17,12 +14,12 @@ public class DefinitionsSteps {
 
 	private WebDriver driver;
 	private Conexion conexion = new Conexion();
-
 	private Questions questions;
 	private LogIn logIn;
 	private Home home;
 	private RegisterPatient registerPatient;
 	private FindPatientRecord findPatientRecord;
+	private MedicalRecord medicalRecord;
 
 	
 
@@ -93,18 +90,19 @@ public class DefinitionsSteps {
 	@Then("^Validar ID cliente Creado$")
 	public void validar_id_cliente_creado() throws IOException {
 		this.registerPatient = new RegisterPatient(driver);
-		this.findPatientRecord = new FindPatientRecord(driver);
 		this.registerPatient.PatientNumber();
-		this.registerPatient.ImprimerID();
-		this.findPatientRecord.ImprimirID();
 
 	}
 	@And("^Buscar paciente$")
 	public void buscar_paciente() throws IOException {
 	this.findPatientRecord = new FindPatientRecord(driver);
 	this.findPatientRecord.BuscarPaciente();
+	}
 
-
+	@Then("^Validar Datos$")
+	public void Validar_Datos() throws IOException {
+		this.medicalRecord = new MedicalRecord(driver);
+		this.medicalRecord.ValidarDatos();
 	}
 
 

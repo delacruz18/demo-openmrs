@@ -18,7 +18,7 @@ public class FindPatientRecord {
     private Botones botones ;
     private Questions questions ;
     private RegisterPatient registerPatient;
-    //String Paciente = registerPatient.getIDdelPatient();
+
 
     public FindPatientRecord(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -34,12 +34,9 @@ public class FindPatientRecord {
 
     @FindBy(how = How.XPATH, using = "//input[@id='patient-search']")
     private WebElement search;
+    @FindBy(how = How.XPATH, using = "//tbody/tr[1]/td[1]")
+    private WebElement SelectPatient;
 
-    public void ImprimirID () throws IOException {
-        String ID = registerPatient.getIDdelPatient();
-        System.out.println(ID);
-
-    }
 
     public void BuscarPaciente () throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -48,7 +45,13 @@ public class FindPatientRecord {
         wait.until(ExpectedConditions.elementToBeClickable(search));
         search.clear();
         String ID = registerPatient.getIDdelPatient();
-       search.sendKeys(ID);
+        search.sendKeys(ID);
+        wait.until(ExpectedConditions.elementToBeClickable(SelectPatient));
+        SelectPatient.click();
 
     }
+
+
+
+
 }

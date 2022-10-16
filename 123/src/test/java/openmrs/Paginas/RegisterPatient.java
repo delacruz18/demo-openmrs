@@ -19,8 +19,10 @@ public class RegisterPatient {
     private Botones botones ;
     private Questions questions ;
 
-    String name ="carlos";
-    String LastName ="De La Cruz";
+    static String name ="carlos";
+    static String LastName ="De La Cruz";
+    static String Direccion ="cl 12 22 33";
+    static  String NumeroTelefono ="3106604843";
    static String IDdelPatient;
 
     public RegisterPatient(WebDriver driver) {
@@ -49,15 +51,11 @@ public class RegisterPatient {
     @FindBy(how = How.ID, using = "address1")
     private WebElement address1;
 
-    @FindBy(how = How.ID, using = "address2")
-    private WebElement address2;
-
     @FindBy(how = How.NAME, using = "phoneNumber")
     private WebElement phoneNumber;
 
     @FindBy(how = How.ID, using = "relationship_type")
     private WebElement relationship;
-
 
     @FindBy(how = How.XPATH, using = "//input[@placeholder='Person Name']")
     private WebElement PersonName;
@@ -98,10 +96,7 @@ public class RegisterPatient {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(address1));
         address1.clear();
-        address1.sendKeys("cl 12 22 33");
-        wait.until(ExpectedConditions.elementToBeClickable(address2));
-        address2.clear();
-        address2.sendKeys("cl 12 22 33");
+        address1.sendKeys(Direccion);
         wait.until(ExpectedConditions.elementToBeClickable(NextButton));
         NextButton.click();
     }
@@ -110,7 +105,7 @@ public class RegisterPatient {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(phoneNumber));
         phoneNumber.clear();
-        phoneNumber.sendKeys("3106604843");
+        phoneNumber.sendKeys(NumeroTelefono);
         wait.until(ExpectedConditions.elementToBeClickable(NextButton));
         NextButton.click();
     }
@@ -147,11 +142,5 @@ public class RegisterPatient {
     public String getIDdelPatient() {        return IDdelPatient;
     }
 
-
-
-    public void ImprimerID(){
-        System.out.println(IDdelPatient);
-
-}
 
 }

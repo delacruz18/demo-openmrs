@@ -35,10 +35,20 @@ Scenario: Inicio de sesion
 
 
 	@tag4
-	Scenario: Register a Patient
+	Scenario: Buscar a Patient
 		Given abrir el navegador
 		When  Diligenciar credenciasles
 		And   seleccionar location
 		And   iniciar sesión
 		And   Buscar paciente
+
+
+	@tag5
+	Scenario: Validar Info del Paciente
+		Given abrir el navegador
+		When  Diligenciar credenciasles
+		And   seleccionar location
+		And   iniciar sesión
+		And   Buscar paciente
+		Then Validar Datos
 

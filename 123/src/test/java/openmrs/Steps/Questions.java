@@ -1,30 +1,41 @@
 package openmrs.Steps;
 
 
+import openmrs.Paginas.RegisterPatient;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.time.Duration;
 
 
 public class Questions {
 
     private WebDriver driver ;
-
-
+	private RegisterPatient registerPatient;
 
 	@FindBy(how = How.NAME, using = "givenName")
 	private WebElement givenName;
-
 	@FindBy(how = How.XPATH, using = "//div[@class='float-sm-right']/span")
 	private WebElement PatientID;
+
+	@FindBy(how = How.XPATH, using = "ul[id='breadcrumbs'] li:nth-child(2)")
+	private WebElement NombreCabecera;
+	@FindBy(how = How.XPATH, using = "//span[@class='PersonName-givenName']")
+	private WebElement FirstName;
+
+	@FindBy(how = How.XPATH, using = "//span[@class='PersonName-familyName']")
+	private WebElement familyName;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='gender-age col-auto']//span[2]")
+	private WebElement Sexo;
+
+	@FindBy(how = How.XPATH, using = "//span[@id='coreapps-telephoneNumber']")
+	private WebElement Telefono;
+
 
 	@Step //assert para validar que estemos logueados y en la pagina de home
 	public void HomeAssert(WebDriver driver) {
@@ -38,8 +49,8 @@ public class Questions {
 		}
 	}
 
-		@Step // assert para validar que estemos localizados en la pagina de login
-		public void LoginAssert(WebDriver driver) {
+	@Step // assert para validar que estemos localizados en la pagina de login
+	public void LoginAssert(WebDriver driver) {
 			String ActualTitle = driver.getTitle();
 			try {Assert.assertEquals(ActualTitle, "Login");
 			}
@@ -61,6 +72,7 @@ public class Questions {
 		}
 
 	}
+
 
 /*
 
