@@ -2,6 +2,9 @@
 #12/01/2022
 #Carlos De la Cruz
 Feature: Pruebas Generales demo openmrs
+	# este proyecto consta de multiples escenarios para comprobar la creación y eliminación de un paciente
+	#  en la pagina https://demo.openmrs.org/openmrs/
+	# de momento no fue posible adjuntar documentos en la ejecución debido a como fue desarrollada la pagina
 
 @tag1
 Scenario: Inicio de sesion
