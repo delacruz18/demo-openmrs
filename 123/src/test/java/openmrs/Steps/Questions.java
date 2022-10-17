@@ -109,13 +109,15 @@ public class Questions {
 
 	}
 	@Step // assert para validar que estemos localizados en la pagina de login
-	public void SearchAssert() {
-		String ActualTitle = driver.getTitle();
-		try {Assert.assertEquals(ActualTitle, "OpenMRS Electronic Medical Record");
+	public void SearchAssert(WebDriver driver) {
+		String ActualTitle1 = driver.getTitle();
+		try {Assert.assertEquals(ActualTitle1, "OpenMRS Electronic Medical Record");
+			System.out.println("Se eliminó el paciente ");
 		}
-		catch (Exception j) {
+		catch (Exception k) {
 			// TODO Auto-generated catch block
-			j.printStackTrace();// se imprime el error arrojado
+			k.printStackTrace();// se imprime el error arrojado
+			System.out.println("NO se eliminó el paciente ");
 		}
 	}
 

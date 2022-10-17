@@ -128,12 +128,12 @@ public class DefinitionsSteps {
 	@When("^Eliminar paciente$")
 	public void Eliminar_paciente() throws IOException {
 		this.operaciones = new Operaciones(driver);
-		this.operaciones.DeletePacient();
+		this.operaciones.DeletePatient();
 	}
 	@Then("^Validar borrado$")
-	public void Validar_borrado() throws IOException {
-		this.operaciones = new Operaciones(driver);
-		this.operaciones.ConfirmDeletePacient();
+	public void Validar_borrado()  {
+		this.questions = new Questions();
+		this.questions.SearchAssert(driver);
 	}
 
 

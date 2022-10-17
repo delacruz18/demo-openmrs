@@ -89,6 +89,8 @@ public class Operaciones {
 
 
 
+
+
     public void CrearAppoiment () throws IOException {// se cra una cita desde la info delpaciente
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(Appointment));
@@ -136,7 +138,7 @@ public class Operaciones {
 
 
 
-    public void DeletePacient () throws IOException{
+    public void DeletePatient() throws IOException{
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(opcionEliminar));
@@ -148,10 +150,7 @@ public class Operaciones {
         Confirmar.click();
     }
 
-    public void ConfirmDeletePacient () throws IOException{
-      this.questions.SearchAssert();
 
-    }
 
 
 }
