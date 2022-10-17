@@ -19,11 +19,11 @@ public class RegisterPatient {
     private Botones botones ;
     private Questions questions ;
 
-    static String name ="carlos";
-    static String LastName ="De La Cruz";
-    static String Direccion ="cl 12 22 33";
-    static  String NumeroTelefono ="3106604843";
-   static String IDdelPatient;
+     static String name ="carlos";
+     static String LastName ="De La Cruz";
+     static String Direccion ="cl 12 22 33";
+     static  String NumeroTelefono ="3106604843";
+    static String IDdelPatient;
 
     public RegisterPatient(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -136,6 +136,7 @@ public class RegisterPatient {
         //this.questions.PatientNumber();
        IDdelPatient=PatientID.getText();
        System.out.println("El id del paciente es "+ IDdelPatient);
+       driver.quit();
         return IDdelPatient ;
     }
 

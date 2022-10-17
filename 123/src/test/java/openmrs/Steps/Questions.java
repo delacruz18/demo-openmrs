@@ -17,6 +17,7 @@ public class Questions {
     private WebDriver driver ;
 	private RegisterPatient registerPatient;
 
+
 	@FindBy(how = How.NAME, using = "givenName")
 	private WebElement givenName;
 	@FindBy(how = How.XPATH, using = "//div[@class='float-sm-right']/span")
@@ -35,6 +36,18 @@ public class Questions {
 
 	@FindBy(how = How.XPATH, using = "//span[@id='coreapps-telephoneNumber']")
 	private WebElement Telefono;
+
+	@FindBy(how = How.XPATH, using = "//span[@id='coreapps-showContactInfo']")
+	private WebElement showContactInfo;
+
+	@FindBy(how = How.XPATH, using = "//body/ul[@id='breadcrumbs']/li[2]")
+	private WebElement NombreCompleto;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='contactInfoContent']//div")
+	private WebElement Direccionp;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='float-sm-right']/span")
+	private WebElement IDDelPAciente;
 
 
 	@Step //assert para validar que estemos logueados y en la pagina de home
@@ -74,19 +87,5 @@ public class Questions {
 	}
 
 
-/*
 
-
-	@Step
-	public void textoAssert(WebDriver driver) {
-
-		Assert.assertEquals("Introduce tu contraseña", "Introduce tu contraseña");
-	}
-
-	@Step
-	public void textoCrearCuentaAssert(WebDriver driver) {
-
-		Assert.assertEquals("Crea una contraseña", "Crea una contraseña");
-	}
-	*/
 }
