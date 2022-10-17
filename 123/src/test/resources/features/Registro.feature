@@ -76,7 +76,7 @@ Scenario: Inicio de sesion
 
 
 
-	@tag7
+	@tag8
 	Scenario: Eliminar Paciente
 		Given abrir el navegador
 		When  Diligenciar credenciasles
