@@ -38,6 +38,7 @@ public class Home {
     }
     public void Validar_cierre () throws IOException {
       this.questions.LoginAssert(driver);
+      driver.quit();
     }
 
 }
