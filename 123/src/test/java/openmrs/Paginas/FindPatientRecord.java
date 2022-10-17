@@ -34,11 +34,17 @@ public class FindPatientRecord {
 
     @FindBy(how = How.XPATH, using = "//input[@id='patient-search']")
     private WebElement search;
+
+    @FindBy(how = How.XPATH, using = "//div[@id='patient-search-results-table_info']")
+    private WebElement Resultado;
+
+
+
     @FindBy(how = How.XPATH, using = "//tbody/tr[1]/td[1]")
     private WebElement SelectPatient;
 
 
-    public void BuscarPaciente () throws IOException {
+    public void BuscarPaciente () throws IOException, InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.elementToBeClickable(FindMenu));
         FindMenu.click();
@@ -46,6 +52,8 @@ public class FindPatientRecord {
         search.clear();
         String ID = registerPatient.getIDdelPatient();
         search.sendKeys(ID);
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(Resultado));
         wait.until(ExpectedConditions.elementToBeClickable(SelectPatient));
         SelectPatient.click();
 

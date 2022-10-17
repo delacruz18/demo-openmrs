@@ -20,6 +20,7 @@ public class DefinitionsSteps {
 	private RegisterPatient registerPatient;
 	private FindPatientRecord findPatientRecord;
 	private MedicalRecord medicalRecord;
+	private Operaciones operaciones;
 
 	
 
@@ -38,13 +39,13 @@ public class DefinitionsSteps {
 		this.logIn = new LogIn(driver);
 		this.logIn.Seleccionarlocation();
 	}
-	@And("^iniciar sesión$")
-	public void iniciar_sesión() throws IOException {
+	@And("^iniciar sesion")
+	public void iniciar_sesion() throws IOException {
 		this.logIn = new LogIn(driver);
 		this.logIn.IniciarSesion();
 	}
-	@Then("^validar sesión$")
-	public void validar_sesión() throws IOException {
+	@Then("^validar sesion")
+	public void validar_sesion() throws IOException {
 		this.logIn = new LogIn(driver);
 		logIn.ValidarLogin();
 	}
@@ -53,8 +54,8 @@ public class DefinitionsSteps {
 		this.home = new Home(driver);
 		home.Cerrarsesion();
 	}
-	@Then("^validar cierre sesión$")
-	public void valida_cierre_sesión() throws IOException {
+	@Then("^validar cierre sesion")
+	public void valida_cierre_sesion() throws IOException {
 		this.home = new Home(driver);
 		home.Validar_cierre();
 	}
@@ -94,7 +95,7 @@ public class DefinitionsSteps {
 
 	}
 	@And("^Buscar paciente$")
-	public void buscar_paciente() throws IOException {
+	public void buscar_paciente() throws IOException, InterruptedException {
 	this.findPatientRecord = new FindPatientRecord(driver);
 	this.findPatientRecord.BuscarPaciente();
 	}
@@ -105,6 +106,35 @@ public class DefinitionsSteps {
 		this.medicalRecord.ValidarDatos();
 	}
 
+	@When("^Crear cita$")
+	public void Crear_cita() throws IOException {
+		this.operaciones = new Operaciones(driver);
+		this.operaciones.CrearAppoiment();
+
+	}
+
+	@Then("^Validar cita$")
+	public void Validar_cita() throws IOException {
+		this.operaciones = new Operaciones(driver);
+		this.operaciones.ValidaAppoint();
+	}
+
+	@When("^Adjuntar Soporte$")
+	public void Adjuntar_Soporte() throws IOException {
+		this.operaciones = new Operaciones(driver);
+		//this.operaciones.AdjuntarDocumento();
+	}
+
+	@When("^Eliminar paciente$")
+	public void Eliminar_paciente() throws IOException {
+		this.operaciones = new Operaciones(driver);
+		this.operaciones.DeletePacient();
+	}
+	@Then("^Validar borrado$")
+	public void Validar_borrado() throws IOException {
+		this.operaciones = new Operaciones(driver);
+		this.operaciones.ConfirmDeletePacient();
+	}
 
 
 }

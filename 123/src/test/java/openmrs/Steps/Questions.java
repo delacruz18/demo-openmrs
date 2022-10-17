@@ -50,6 +50,15 @@ public class Questions {
 	private WebElement IDDelPAciente;
 
 
+
+
+	@FindBy(how = How.XPATH, using = "//table[@id='appointmentRequestsGridTable']//div[@class='ngCanvas']")
+	private WebElement Tabla;
+
+
+
+
+
 	@Step //assert para validar que estemos logueados y en la pagina de home
 	public void HomeAssert(WebDriver driver) {
 		String ActualTitleHome = driver.getTitle();
@@ -67,23 +76,47 @@ public class Questions {
 			String ActualTitle = driver.getTitle();
 			try {Assert.assertEquals(ActualTitle, "Login");
 			}
-			catch (Exception e) {
+			catch (Exception j) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();// se imprime el error arrojado
+				j.printStackTrace();// se imprime el error arrojado
 			}
 		}
-	public void PatientNumber() throws IOException {
+	public void PatientNumber(WebDriver driver)  {
 
 		try{
 			if(PatientID.isDisplayed())
 				System.out.println("Element is present and displayed");
 			else
 				System.out.println("El elemento no ha sido desplegado");
+		}catch (Exception f) {
+			// TODO Auto-generated catch block
+			f.printStackTrace();// se imprime el error arrojado
+		}
+
+	}
+	public void Cite(WebDriver driver) throws IOException {
+
+
+		try{
+			if(Tabla.isDisplayed())
+				System.out.println("la cita fue creada");
+			else
+				System.out.println("la cita no fue creada");
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();// se imprime el error arrojado
 		}
 
+	}
+	@Step // assert para validar que estemos localizados en la pagina de login
+	public void SearchAssert() {
+		String ActualTitle = driver.getTitle();
+		try {Assert.assertEquals(ActualTitle, "OpenMRS Electronic Medical Record");
+		}
+		catch (Exception j) {
+			// TODO Auto-generated catch block
+			j.printStackTrace();// se imprime el error arrojado
+		}
 	}
 
 
